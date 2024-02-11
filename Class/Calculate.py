@@ -32,3 +32,24 @@ class Risk_Asset_Calculate:
         value = value_1 + value_2
 
         return value
+
+    def overseas_stock_advanced(self, df):
+        value_1 = df.loc['SPY']['평가 금액($)']
+        value_2 = df.loc['QQQ']['평가 금액($)']
+        value_3 = df.loc['ICLN']['평가 금액($)']
+        value_4 = df.loc['ARKK']['평가 금액($)']
+        value_5 = df.loc['XLV']['평가 금액($)']
+        value_6 = df.loc['SCHD']['평가 금액($)']
+        value_7 = df.loc['TQQQ']['평가 금액($)']
+
+        value = int(round((value_1 + value_2 + value_3 + value_4 + value_5 + value_6 + value_7) * df.iloc[0]['평균 매수 단가\n기준 기대 수익금(원)'], 0))
+
+        return value
+
+    def overseas_stock_emerging(self, df):
+        value_1 = df.loc['INDA']['평가 금액($)']
+        value_2 = df.loc['MCHI']['평가 금액($)']
+
+        value = int(round((value_1 + value_2) * df.iloc[0]['평균 매수 단가\n기준 기대 수익금(원)'], 0))
+
+        return value

@@ -127,3 +127,63 @@ class Risk_Asset_Preprocessing:
         df = df.drop("", axis = 1)
 
         return df
+
+    def overseas_stock_1(self, df):
+        # 첫 번째 열 삭제
+        df = df.drop('Unnamed: 0', axis = 1)
+
+        # 인덱스의 데이터 타입을 문자형으로 변경
+        df.index = df.index.astype(str)
+
+        # 두 번째 인덱스 명을 공백으로 변경
+        df.index.values[1] = ''
+
+        # 두 번째 행을 컬럼명으로 변경 후 필요 없는 행 삭제
+        df.columns = df.iloc[1]
+        df = df.drop(df.index[1:3])
+
+        # 인덱스 재설정
+        df = df.reset_index(drop=True)
+
+        return df
+
+    def overseas_stock_2(self, df):
+        # 첫 번째 열 삭제
+        df = df.drop('Unnamed: 0', axis = 1)
+
+        # 인덱스의 데이터 타입을 문자형으로 변경
+        df.index = df.index.astype(str)
+
+        # 두 번째 인덱스 명을 공백으로 변경
+        df.index.values[1] = ''
+
+        # 두 번째 행을 컬럼명으로 변경 후 필요 없는 행 삭제
+        df.columns = df.iloc[1]
+        df = df.drop(df.index[1])
+
+        # '평가 금액($)' 항목이 0으로 되어 있는 행 삭제
+        df = df[~(df['평가 금액($)'] == 0)]
+
+        # '티커(Ticker)' 항목 열 이름을 공백으로 설정
+        df = df.rename(columns={'티커(Ticker)': ''})
+
+        # '종목명' 항목으로 행 이름 설정
+        df.set_index(df.iloc[:, 2], inplace=True)
+
+        # '종목 명' 항목 삭제
+        df = df.drop("", axis = 1)
+
+        return df
+
+    def fund(self, df):
+        # 인덱스의 데이터 타입을 문자형으로 변경
+        df.index = df.index.astype(str)
+
+        # 첫 번째 인덱스 명을 공백으로 변경
+        df.index.values[0] = ''
+
+        # 첫 번째 행을 컬럼명으로 변경 후 첫 번째 행 삭제
+        df.columns = df.iloc[0]
+        df = df.drop(df.index[0])
+
+        return df
