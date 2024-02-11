@@ -187,3 +187,45 @@ class Risk_Asset_Preprocessing:
         df = df.drop(df.index[0])
 
         return df
+
+    def pension(self, df):
+        # 인덱스의 데이터 타입을 문자형으로 변경
+        df.index = df.index.astype(str)
+
+        # 네 번째 인덱스 명을 공백으로 변경
+        df.index.values[3] = ''
+
+        # 네 번째 행을 컬럼명으로 변경 후 필요 없는 행 삭제
+        df.columns = df.iloc[3]
+        df = df.drop(df.index[0:4])
+
+        # 인덱스 재설정
+        df = df.reset_index(drop=True)
+
+        return df
+
+    def finance(self, df):
+        # 행 이름 변경 전 동일한 이름에 대한 구분
+        for i in range(0, 3):
+            df.at[i, 'Unnamed: 0'] = df.iloc[i]['Unnamed: 0'] + '_국내'
+        for i in range(4, 9):
+            df.at[i, 'Unnamed: 0'] = df.iloc[i]['Unnamed: 0'] + '_선진국'
+        for i in range(10, 14):
+            df.at[i, 'Unnamed: 0'] = df.iloc[i]['Unnamed: 0'] + '_신흥국'
+        for i in range(15, 20):
+            df.at[i, 'Unnamed: 0'] = df.iloc[i]['Unnamed: 0'] + '_예수금'
+
+        # 열 이름의 데이터 타입을 문자형으로 변경
+        df.columns = df.columns.astype(str)
+
+        # 첫 번째 열 이름을 공백으로 변경
+        df.columns.values[0] = ''
+
+        # 첫 번째 컬럼 내 Cell 값을 index명으로 변경 후 첫 번째 열 삭제
+        df.set_index(df.iloc[:, 0], inplace=True)
+        df = df.drop(df.columns[0], axis = 1)
+
+        # DataFrame 내 Cell 데이터 타입을 문자형에서 숫자형으로 변경
+        df = df.astype(int)
+
+        return df
