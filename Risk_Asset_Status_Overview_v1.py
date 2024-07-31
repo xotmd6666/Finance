@@ -20,7 +20,7 @@ df_pension_2 = pd.read_excel(file_path + r'\pension_savings_account_management_v
 df_pension_3 = pd.read_excel(file_path + r'\pension_savings_account_management_v4.xlsm', sheet_name = 'S&P')
 df_pension_4 = pd.read_excel(file_path + r'\pension_savings_account_management_v4.xlsm', sheet_name = 'CSI300')
 df_pension_5 = pd.read_excel(file_path + r'\pension_savings_account_management_v4.xlsm', sheet_name = '펀드')
-df_finance = pd.read_excel(r'C:\Users\User\Desktop\Finance\Monthly_Asset_Managemenet_v3.xlsx', sheet_name = '위험자산 월별 자산 금액(국가별)')
+df_finance = pd.read_excel(r'C:\Users\User\Desktop\Finance\Monthly_Asset_Managemenet_v4.xlsx', sheet_name = '위험자산 월별 자산 금액(국가별)')
 
 # ----------파일 전처리----------
 pre = Risk_Asset_Preprocessing()

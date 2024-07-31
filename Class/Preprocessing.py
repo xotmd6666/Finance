@@ -207,13 +207,13 @@ class Risk_Asset_Preprocessing:
     def finance(self, df):
         # 행 이름 변경 전 동일한 이름에 대한 구분
         for i in range(0, 3):
-            df.at[i, 'Unnamed: 0'] = df.iloc[i]['Unnamed: 0'] + '_국내'
+            df.at[i, '항목'] = df.iloc[i]['항목'] + '_국내'
         for i in range(4, 9):
-            df.at[i, 'Unnamed: 0'] = df.iloc[i]['Unnamed: 0'] + '_선진국'
-        for i in range(10, 14):
-            df.at[i, 'Unnamed: 0'] = df.iloc[i]['Unnamed: 0'] + '_신흥국'
-        for i in range(15, 20):
-            df.at[i, 'Unnamed: 0'] = df.iloc[i]['Unnamed: 0'] + '_예수금'
+            df.at[i, '항목'] = df.iloc[i]['항목'] + '_선진국'
+        for i in range(11, 15):
+            df.at[i, '항목'] = df.iloc[i]['항목'] + '_신흥국'
+        for i in range(16, 21):
+            df.at[i, '항목'] = df.iloc[i]['항목'] + '_예수금'
 
         # 열 이름의 데이터 타입을 문자형으로 변경
         df.columns = df.columns.astype(str)
