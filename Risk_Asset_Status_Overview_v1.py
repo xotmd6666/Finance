@@ -67,11 +67,10 @@ insert_column_name = formatted_date + month_expression
 df_finance[insert_column_name] = np.nan
 df_finance = df_finance.fillna('')
 
-# 문자형 공백을 숫자형 공백으로 변환
-pd.set_option('future.no_silent_downcasting', True)
-df_finance = df_finance.replace({'^\\s*$': np.nan}, regex=True)
-df_finance = df_finance.fillna(0).astype(int)  
-df_finance = df_finance.replace({'^\\s*$': np.nan}, regex=True).astype(int)
+# Replace empty strings or whitespace-only strings with NaN, fill NaN with 0, and convert to integers
+df_finance = df_finance.replace({'^\s*$': np.nan}, regex=True)  # Replace empty/whitespace strings with NaN
+df_finance = df_finance.fillna(0)                              # Replace NaN with 0
+df_finance = df_finance.astype(int)                            # Convert to integers
 
 # 수집한 값 입력
 # 국내
@@ -104,10 +103,9 @@ def format_with_commas(value):
     return locale.format_string('%d', value, grouping=True)
 df_finance = df_finance.map(format_with_commas)
 
-# ExcelWriter 객체 생성 (기존 파일에 append 모드로)
-with pd.ExcelWriter('output.xlsx', mode='a', engine='openpyxl') as writer:
+with pd.ExcelWriter('output.xlsx', mode='a', engine='openpyxl', if_sheet_exists='replace') as writer:
     # 데이터프레임을 새로운 시트에 추가
-    df_finance.to_excel(writer, sheet_name = '위험자산 월별 자산 금액(국가별)', index = True)
+    df_finance.to_excel(writer, sheet_name='위험자산 월별 자산 금액(국가별)', index=True)
 
 # 코드 실행 완료 알림
 print('Code run completion')
