@@ -15,11 +15,12 @@ df_overseas_stock_1 = pd.read_excel(file_path + r'\overseas_stock_management_v8.
 df_overseas_stock_2 = pd.read_excel(file_path + r'\overseas_stock_management_v8.xlsx', sheet_name = '보유 종목 현황')
 df_fund_1 = pd.read_excel(file_path + r'\all_fund_management.xlsx', sheet_name = '해외 선진국 펀드')
 df_fund_2 = pd.read_excel(file_path + r'\all_fund_management.xlsx', sheet_name = '해외 신흥국 펀드')
-df_pension_1 = pd.read_excel(file_path + r'\pension_savings_account_management_v4.xlsm', sheet_name = '예수금 및 자산합계')
-df_pension_2 = pd.read_excel(file_path + r'\pension_savings_account_management_v4.xlsm', sheet_name = '나스닥')
-df_pension_3 = pd.read_excel(file_path + r'\pension_savings_account_management_v4.xlsm', sheet_name = 'S&P')
-df_pension_4 = pd.read_excel(file_path + r'\pension_savings_account_management_v4.xlsm', sheet_name = 'CSI300')
-df_pension_5 = pd.read_excel(file_path + r'\pension_savings_account_management_v4.xlsm', sheet_name = '펀드')
+df_pension_1 = pd.read_excel(file_path + r'\pension_savings_account_management_v5.xlsm', sheet_name = '예수금 및 자산합계')
+df_pension_2 = pd.read_excel(file_path + r'\pension_savings_account_management_v5.xlsm', sheet_name = '나스닥(키움)')
+df_pension_3 = pd.read_excel(file_path + r'\pension_savings_account_management_v5.xlsm', sheet_name = 'S&P(키움)')
+df_pension_4 = pd.read_excel(file_path + r'\pension_savings_account_management_v5.xlsm', sheet_name = 'CSI300(키움)')
+df_pension_5 = pd.read_excel(file_path + r'\pension_savings_account_management_v5.xlsm', sheet_name = '펀드(키움)')
+df_pension_6 = pd.read_excel(file_path + r'\pension_savings_account_management_v5.xlsm', sheet_name = 'S&P(미래에셋)')
 df_finance = pd.read_excel(r'C:\Users\User\Desktop\Finance\Monthly_Asset_Managemenet_v4.xlsx', sheet_name = '위험자산 월별 자산 금액(국가별)')
 
 # ----------파일 전처리----------
@@ -49,7 +50,7 @@ value_fund_advanced = df_fund_1.iloc[-1]['평가금액']
 value_fund_emerging = df_fund_2.iloc[-1]['평가금액']
 # 연금저축
 value_pension_deposit = df_pension_1.iloc[-1]['D+2(원)']
-value_pension_advanced = df_pension_2.loc[3]['Unnamed: 2'] + df_pension_3.loc[3]['Unnamed: 2']
+value_pension_advanced = df_pension_2.loc[3]['Unnamed: 2'] + df_pension_3.loc[3]['Unnamed: 2'] + df_pension_6.loc[3]['Unnamed: 2']
 value_pension_emerging = df_pension_4.loc[3]['Unnamed: 2']
 value_pension_advanced_fund = int(round(df_pension_5.loc[3]['Unnamed: 2'], 0))
 
