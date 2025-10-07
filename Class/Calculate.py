@@ -4,11 +4,11 @@ import locale
 
 class Risk_Asset_Calculate:    
     def intermediary_ISA_domestic(self, df):
-        value_1 = df.loc['삼성전자']['평가 금액(원)']
+        # value_1 = df.loc['삼성전자']['평가 금액(원)']
+        # value = value_1
 
-        value = value_1
-
-        return value
+        # return value
+        return 0
 
     def intermediary_ISA_advanced(self, df):
         value_1 = df.loc['TIGER 미국S&P500']['평가 금액(원)']
