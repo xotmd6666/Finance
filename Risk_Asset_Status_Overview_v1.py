@@ -11,8 +11,8 @@ file_path = r'C:\Users\User\Desktop\Finance\investment_management'
 # 각 자산 관리 파일 읽어오기
 df_intermediary_ISA_1 = pd.read_excel(file_path + r'\intermediary_ISA_account_management.xlsx', sheet_name = '자산 정리')
 df_intermediary_ISA_2 = pd.read_excel(file_path + r'\intermediary_ISA_account_management.xlsx', sheet_name = '보유 주식')
-df_overseas_stock_1 = pd.read_excel(file_path + r'\overseas_stock_management_v8.xlsx', sheet_name = '자산 정리')
-df_overseas_stock_2 = pd.read_excel(file_path + r'\overseas_stock_management_v8.xlsx', sheet_name = '보유 종목 현황')
+df_overseas_stock_1 = pd.read_excel(file_path + r'\overseas_stock_management_v9.xlsx', sheet_name = '자산 정리')
+df_overseas_stock_2 = pd.read_excel(file_path + r'\overseas_stock_management_v9.xlsx', sheet_name = '보유 종목 현황')
 df_fund_1 = pd.read_excel(file_path + r'\all_fund_management.xlsx', sheet_name = '해외 선진국 펀드')
 df_fund_2 = pd.read_excel(file_path + r'\all_fund_management.xlsx', sheet_name = '해외 신흥국 펀드')
 df_pension_1 = pd.read_excel(file_path + r'\pension_savings_account_management_v5.xlsm', sheet_name = '예수금 및 자산합계')
