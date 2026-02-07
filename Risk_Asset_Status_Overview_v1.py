@@ -21,7 +21,7 @@ df_pension_3 = pd.read_excel(file_path + r'\pension_savings_account_management_v
 df_pension_4 = pd.read_excel(file_path + r'\pension_savings_account_management_v5.xlsm', sheet_name = 'CSI300(키움)')
 df_pension_5 = pd.read_excel(file_path + r'\pension_savings_account_management_v5.xlsm', sheet_name = '펀드(키움)')
 df_pension_6 = pd.read_excel(file_path + r'\pension_savings_account_management_v5.xlsm', sheet_name = 'S&P(미래에셋)')
-df_finance = pd.read_excel(r'C:\Users\User\Desktop\Finance\Monthly_Asset_Managemenet_v4.xlsx', sheet_name = '위험자산 월별 자산 금액(국가별)')
+df_finance = pd.read_excel(r'C:\Users\User\Desktop\Finance\Monthly_Asset_Managemenet_v4(2026).xlsx', sheet_name = '위험자산 월별 자산 금액(국가별)')
 
 # ----------파일 전처리----------
 pre = Risk_Asset_Preprocessing()
@@ -95,14 +95,15 @@ df_finance.at['연금저축_예수금', insert_column_name] = value_pension_depo
 # 소수점 0번째 자리까지 나타내기
 df_finance[insert_column_name] = df_finance[insert_column_name].map('{:.0f}'.format)
 
-# 데이터 타입을 문자형에서 숫자형으로 변경
-df_finance = df_finance.astype(int)
-
 # 가져온 파일 내 숫자가 천 단위 구분 기호(,)가 있도록 변경
 def format_with_commas(value):
-    locale.setlocale(locale.LC_ALL, '')  # 현재 시스템의 로케일 설정
-    return locale.format_string('%d', value, grouping=True)
-df_finance = df_finance.map(format_with_commas)
+    try:
+        locale.setlocale(locale.LC_ALL, '')  # 현재 시스템의 로케일 설정
+        return locale.format_string('%d', int(float(value)), grouping=True)
+    except (ValueError, TypeError):
+        return str(value)
+
+df_finance = df_finance.applymap(format_with_commas)
 
 with pd.ExcelWriter('output.xlsx', mode='a', engine='openpyxl', if_sheet_exists='replace') as writer:
     # 데이터프레임을 새로운 시트에 추가

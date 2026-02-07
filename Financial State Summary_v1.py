@@ -13,7 +13,7 @@ df_pension = pd.read_excel(file_path + r'\pension_savings_account_management_v5.
 df_gold = pd.read_excel(file_path + r'\(dollar,gold,cryptocurrency,the_yen)_finance.xlsx', sheet_name='금')
 df_crytocurrency = pd.read_excel(file_path + r'\(dollar,gold,cryptocurrency,the_yen)_finance.xlsx', sheet_name='가상화폐')
 df_yen = pd.read_excel(file_path + r'\(dollar,gold,cryptocurrency,the_yen)_finance.xlsx', sheet_name='엔화')
-df_finance = pd.read_excel(r'C:\Users\User\Desktop\Finance\Monthly_Asset_Managemenet_v4.xlsx', sheet_name='월별 자산 금액')
+df_finance = pd.read_excel(r'C:\Users\User\Desktop\Finance\Monthly_Asset_Managemenet_v4(2026).xlsx', sheet_name='월별 자산 금액')
 
 # ----------파일 전처리----------
 pre = Finance_Preprocessing()
