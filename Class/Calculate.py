@@ -11,20 +11,22 @@ class Risk_Asset_Calculate:
         return 0
 
     def intermediary_ISA_advanced(self, df):
-        value_1 = df.loc['TIGER 미국S&P500']['평가 금액(원)']
-        value_2 = df.loc['TIGER 미국나스닥100']['평가 금액(원)']
-        value_3 = df.loc['KODEX 미국S&P500(H)']['평가 금액(원)']
-        value_4 = df.loc['KODEX 미국나스닥100(H)']['평가 금액(원)']
+        # value_1 = df.loc['TIGER 미국S&P500']['평가 금액(원)']
+        # value_2 = df.loc['TIGER 미국나스닥100']['평가 금액(원)']
+        # value_3 = df.loc['KODEX 미국S&P500(H)']['평가 금액(원)']
+        # value_4 = df.loc['KODEX 미국나스닥100(H)']['평가 금액(원)']
 
-        value = value_1 + value_2 + value_3 + value_4
+        # value = value_1 + value_2 + value_3 + value_4
+        value = 0
 
         return value
 
     def intermediary_ISA_emerging(self, df):
-        value_1 = df.loc['TIGER 차이나CSI300']['평가 금액(원)']
-        value_2 = df.loc['KOSEF 인도Nifty50(합성)']['평가 금액(원)']
+        # value_1 = df.loc['TIGER 차이나CSI300']['평가 금액(원)']
+        # value_2 = df.loc['KOSEF 인도Nifty50(합성)']['평가 금액(원)']
 
-        value = value_1 + value_2
+        # value = value_1 + value_2
+        value = 0
 
         return value
 
@@ -42,8 +44,9 @@ class Risk_Asset_Calculate:
 
     def overseas_stock_emerging(self, df):
         value_1 = df.loc['INDA']['평가 금액($)']
-        value_2 = df.loc['MCHI']['평가 금액($)']
+        # value_2 = df.loc['MCHI']['평가 금액($)']
 
-        value = int(round((value_1 + value_2) * df.iloc[0]['평균 매수 단가\n기준 기대 수익금(원)'], 0))
+        # value = int(round((value_1 + value_2) * df.iloc[0]['평균 매수 단가\n기준 기대 수익금(원)'], 0))
+        value = int(round((value_1) * df.iloc[0]['평균 매수 단가\n기준 기대 수익금(원)'], 0))
 
         return value
