@@ -46,6 +46,7 @@ def convert_to_int(value):
     except ValueError:
         return value
 
+# DataFrame 전체에 함수를 적용하려면 applymap을 사용합니다.
 df_finance = df_finance.map(convert_to_int)
 
 df_finance.replace({'^\s*$': np.nan}, regex=True, inplace=True)
@@ -67,6 +68,7 @@ def format_with_commas(value):
     except (ValueError, TypeError):
         return value
 
+# DataFrame 전체에 함수를 적용하려면 applymap을 사용합니다.
 df_finance = df_finance.map(format_with_commas)
 
 # 엑셀 파일 저장
